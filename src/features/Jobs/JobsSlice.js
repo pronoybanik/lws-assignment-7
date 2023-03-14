@@ -6,6 +6,7 @@ const initialState = {
   isLoading: false,
   isError: false,
   error: "",
+  search: "",
 };
 
 export const fetchJobs = createAsyncThunk("jobs/fetchJobs", async () => {
@@ -32,6 +33,14 @@ export const removeJobs = createAsyncThunk("jobs/removeJobs", async (id) => {
 const jobsSlice = createSlice({
   name: "jobs",
   initialState,
+  reducers: {
+    searchBar: (state, action) => {
+      state.jobData = state.jobData.filter((item) =>
+        item.title.toLowerCase().includes(action.payload.toLowerCase())
+      );
+    },
+  },
+
   extraReducers: (builder) => {
     builder
       .addCase(fetchJobs.pending, (state) => {
@@ -87,7 +96,9 @@ const jobsSlice = createSlice({
       .addCase(removeJobs.fulfilled, (state, action) => {
         state.isError = false;
         state.isLoading = false;
-        state.jobData = state.jobData.filter(data => data.id !== action.meta.arg)
+        state.jobData = state.jobData.filter(
+          (data) => data.id !== action.meta.arg
+        );
       })
       .addCase(removeJobs.rejected, (state, action) => {
         state.isLoading = false;
@@ -98,3 +109,4 @@ const jobsSlice = createSlice({
 });
 
 export default jobsSlice.reducer;
+export const { searchBar } = jobsSlice.actions;

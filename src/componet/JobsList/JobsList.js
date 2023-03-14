@@ -31,7 +31,17 @@ const JobsList = () => {
     content = <p>No jobs found!</p>;
   }
 
-  return <div className="jobs-list">{content}</div>;
+
+  return (
+    <div className="jobs-list">
+      {content}
+      
+    </div>
+  );
 };
 
 export default JobsList;
+
+// {jobData.map((data) => (
+//   <JobItem key={data.id} data={data}></JobItem>
+// ))}

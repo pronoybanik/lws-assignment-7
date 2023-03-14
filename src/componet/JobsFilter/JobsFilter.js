@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { searchBar } from "../../features/Jobs/JobsSlice";
 
 const JobsFilter = () => {
+  const dispatch = useDispatch();
+  const [searching, setSearching] = useState("");
+  dispatch(searchBar(searching));
+
   return (
     <div className="md:flex space-y-2 md:space-y-0 justify-between mb-10 ">
       <h1 className="lws-section-title">All Available Jobs</h1>
@@ -12,6 +18,7 @@ const JobsFilter = () => {
             placeholder="Search Job"
             className="search-input"
             id="lws-searchJob"
+            onChange={(e) => setSearching(e.target.value)}
           />
         </div>
         <select

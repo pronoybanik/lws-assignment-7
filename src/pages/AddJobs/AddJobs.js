@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { createJobs } from "../../features/Jobs/JobsSlice";
 const AddJobs = () => {
   const [jobTitle, setJobTitle] = useState("");
@@ -7,6 +8,14 @@ const AddJobs = () => {
   const [salary, setSalary] = useState("");
   const [deadLine, setDeadLine] = useState("");
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  
+  const reset = () => {
+    setJobTitle("");
+    setJobType("");
+    setSalary("");
+    setDeadLine("");
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -18,6 +27,8 @@ const AddJobs = () => {
         deadline: deadLine,
       })
     );
+    reset();
+    navigate("/");
   };
   return (
     <div>

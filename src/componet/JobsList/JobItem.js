@@ -1,26 +1,27 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { removeJobs } from "../../features/Jobs/JobsSlice";
 
 const JobItem = ({ data }) => {
   const dispatch = useDispatch();
   const { id, deadline, salary, title, type } = data || {};
+  console.log(data);
 
   const handleDelete = () => {
     dispatch(removeJobs(id));
   };
 
-  //   let colors = "";
-  //   if (type === "Fulltime") {
-  //     colors = "#FF8A00";
-  //   }
-  //   if (type === "Internship") {
-  //     colors = "#FF5757";
-  //   }
-  //   if (type === "Remote") {
-  //     colors = "#56E5C4";
-  //   }
-  // !text-[#FF8A00]
+  let color;
+  if(type==='Full Time'){
+      color= '#FF8A00'
+  }
+ else if(type === 'Internship'){
+  color ='#FF5757'
+ }
+ else{
+  color= '#56E5C4'
+ }
 
   return (
     <div className="lws-single-job">
@@ -29,7 +30,9 @@ const JobItem = ({ data }) => {
         <div className="job-footers">
           <div className="lws-type">
             {/* <!-- Fulltime - #FF8A00,  --><!-- Internship - #FF5757,  --><!-- Remote - #56E5C4,  --> */}
-            <i className={`fa-solid fa-stop text-lg mr-1.5`}></i>
+            <i
+              className={`fa-solid fa-stop !text-[${color}] text-lg mr-1.5`}
+            ></i>
             {type}
           </div>
           <div className="lws-salary">
@@ -44,10 +47,12 @@ const JobItem = ({ data }) => {
       </div>
       <div className="mt-5 flex lg:mt-0 lg:ml-4">
         <span className="hidden sm:block">
-          <button type="button" className="lws-edit btn btn-primary">
-            <i className="fa-solid fa-pen text-gray-300 -ml-1 mr-2"></i>
-            Edit
-          </button>
+          <Link to={`/edit/${id}`}>
+            <button type="button" className="lws-edit btn btn-primary">
+              <i className="fa-solid fa-pen text-gray-300 -ml-1 mr-2"></i>
+              Edit
+            </button>
+          </Link>
         </span>
 
         <span className="sm:ml-3">
