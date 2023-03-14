@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AddJobs from "./pages/AddJobs/AddJobs";
 import LeftBar from "./componet/LeftBar/LeftBar";
 
+
 function App() {
   return (
     <div className="App">

@@ -9,7 +9,7 @@ const AddJobs = () => {
   const [deadLine, setDeadLine] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  
+
   const reset = () => {
     setJobTitle("");
     setJobType("");
@@ -30,7 +30,9 @@ const AddJobs = () => {
     reset();
     navigate("/");
   };
+
   return (
+
     <div>
       <div className="max-w-[90rem] mx-auto px-4 sm:px-6 md:px-8">
         <div className="lg:pl-[14rem] mt-[5.8125rem]">
@@ -126,7 +128,7 @@ const AddJobs = () => {
                     id="lws-submit"
                     className="cursor-pointer btn btn-primary w-fit"
                   >
-                    save
+                    save 
                   </button>
                 </div>
               </form>

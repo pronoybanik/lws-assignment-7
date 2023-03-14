@@ -6,7 +6,6 @@ import { removeJobs } from "../../features/Jobs/JobsSlice";
 const JobItem = ({ data }) => {
   const dispatch = useDispatch();
   const { id, deadline, salary, title, type } = data || {};
-  console.log(data);
 
   const handleDelete = () => {
     dispatch(removeJobs(id));
