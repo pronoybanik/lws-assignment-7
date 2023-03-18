@@ -11,16 +11,18 @@ const JobItem = ({ data }) => {
     dispatch(removeJobs(id));
   };
 
+
+
+  // color filtering
   let color;
-  if(type==='Full Time'){
-      color= '#FF8A00'
+  if (type === "Full Time") {
+    color = "#FF8A00";
+  } else if (type === "Internship") {
+    color = "#FF5757";
+  } else {
+    color = "#56E5C4";
   }
- else if(type === 'Internship'){
-  color ='#FF5757'
- }
- else{
-  color= '#56E5C4'
- }
+  // End..
 
   return (
     <div className="lws-single-job">
@@ -46,8 +48,12 @@ const JobItem = ({ data }) => {
       </div>
       <div className="mt-5 flex lg:mt-0 lg:ml-4">
         <span className="hidden sm:block">
-          <Link to={`/edit/${id}`}>
-            <button type="button" className="lws-edit btn btn-primary">
+          <Link to={`/editJobs/${id}`}>
+            <button
+            
+              type="button"
+              className="lws-edit btn btn-primary"
+            >
               <i className="fa-solid fa-pen text-gray-300 -ml-1 mr-2"></i>
               Edit
             </button>
