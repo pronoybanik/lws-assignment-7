@@ -7,6 +7,7 @@ import AddJobs from "./pages/AddJobs/AddJobs";
 import LeftBar from "./componet/LeftBar/LeftBar";
 import EditJob from "./componet/editJob/EditJob";
 
+// assignment -7
 function App() {
   const [searching, setSearching] = useState("");
 
